@@ -19,10 +19,10 @@ e.g. YOU FAILED X PEOPLE (posted on social media wall thing)
 ROUGH IDEAS FOR FORMULAE (pluralized like this because I'm an intolerable pedant)
 =====
 Key:
-N (total number of participants)
-n (number of Watchers)
-p (number of summoned Players -- not the Hero)
-h (boolean describing the hero's existence, true if he's there)
+- N (total number of participants)
+- n (number of Watchers)
+- p (number of summoned Players -- not the Hero)
+- h (boolean describing the hero's existence, true if he's there)
 
 100N = number of Horde units on game start
 N/100 = number of Spawners on game start (shouldn't increase over the course of a game)
