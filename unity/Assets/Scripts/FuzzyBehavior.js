@@ -10,6 +10,7 @@ function Start () {
 	xscale = 1.6;
 	yscale = 1.6;
 	zscale = 0;
+	this.rigidbody.detectCollisions = true;
 }
 
 function Update () {
