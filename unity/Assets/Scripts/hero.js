@@ -1,5 +1,7 @@
 ﻿#pragma strict
 
+@script RequireComponent(CharacterController);
+
 var scale : double;
 
 private var thisTransform : Transform;
@@ -20,5 +22,6 @@ function Update () {
 	movement *= Time.deltaTime;
 	movement *= scale;
 	
+	this.transform.position.z = -0.15;
 	character.Move( movement );
 }
