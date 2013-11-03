@@ -219,19 +219,19 @@ pip-log.txt
 #############
 
 # Unity3D .gitignore file.
-.DS_Store
-Library/AssetImportState
-Library/AssetServerCacheV3
-Library/FailedAssetImports.txt
-Library/ScriptAssemblies
-Library/ScriptMapper
-Library/assetDatabase3
-Library/cache
-Library/expandedItems
-Library/metadata
-Library/previews
-Library/guidmapper
-Temp
-*.csproj
-*.pidb
-*.sln
+unity/.DS_Store
+unity/Library/AssetImportState
+unity/Library/AssetServerCacheV3
+unity/Library/FailedAssetImports.txt
+unity/Library/ScriptAssemblies
+unity/Library/ScriptMapper
+unity/Library/assetDatabase3
+unity/Library/cache
+unity/Library/expandedItems
+unity/Library/metadata
+unity/Library/previews
+unity/Library/guidmapper
+unity/Temp
+unity/*.csproj
+unity/*.pidb
+unity/*.sln
