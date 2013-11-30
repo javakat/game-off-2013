@@ -33,24 +33,28 @@ function OnGUI () {
 }
 
 function Update () {
-	var movement = Vector3(Input.GetAxis('Horizontal'), Input.GetAxis('Vertical'), 0);
-	var cursor = Vector3();
-	
-	movement.Normalize();
-	
-	velocity = character.velocity;
-	movement += velocity;
-	movement *= Time.deltaTime;
-	movement *= scale;
-	
-	this.transform.position.z = -0.15;
-	character.Move( movement );
-	
-	cursor = Input.mousePosition.normalized / 5;
-	GameObject.Find("punchfists").rigidbody.position = cursor + this.transform.position;
-	
-	if(Input.GetKeyDown("e")) {
-		GameObject.Find("punchfists").rigidbody.velocity = Vector3(4, 0, 0);
+
+    if (networkView.isMine)
+    {
+		var movement = Vector3(Input.GetAxis('Horizontal'), Input.GetAxis('Vertical'), 0);
+		var cursor = Vector3();
+		
+		movement.Normalize();
+		
+		velocity = character.velocity;
+		movement += velocity;
+		movement *= Time.deltaTime;
+		movement *= scale;
+		
+		this.transform.position.z = -0.15;
+		character.Move( movement );
+		
+		cursor = Input.mousePosition.normalized / 5;
+		GameObject.Find("punchfists").rigidbody.position = cursor + this.transform.position;
+		
+		if(Input.GetKeyDown("e")) {
+			GameObject.Find("punchfists").rigidbody.velocity = Vector3(4, 0, 0);
+		}
 	}
 	
 }
