@@ -18,6 +18,7 @@ using System.Collections;
 public class MouseLook : MonoBehaviour {
 
 	public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
+	public bool invertYAxis = false;
 	public RotationAxes axes = RotationAxes.MouseXAndY;
 	public float sensitivityX = 15F;
 	public float sensitivityY = 15F;
@@ -39,7 +40,10 @@ public class MouseLook : MonoBehaviour {
 			rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 			
-			transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+			if(invertYAxis)
+				transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+			else
+				transform.localEulerAngles = new Vector3(rotationY, rotationX, 0);
 		}
 		else if (axes == RotationAxes.MouseX)
 		{

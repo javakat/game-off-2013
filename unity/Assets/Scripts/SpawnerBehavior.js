@@ -4,11 +4,10 @@ var rate : int; // in s
 var needsToSpawn : boolean;
 var fuzzy : Rigidbody;
 
-private var time = 0;
+private var time = 0.0;
 
 function Start () {
-	needsToSpawn = false;
-	rate = 60;
+
 }
 
 function Update () {
@@ -16,13 +15,16 @@ function Update () {
 		needsToSpawn = trySpawn();
 		if(needsToSpawn) return;
 	}
-	if(++time >= rate) {
+	time += 1*Time.deltaTime;
+	if(time >= rate) {
 		needsToSpawn = true;
 		time = 0;
 	}
 }
 
 function trySpawn() {
-	var newFuzz : Rigidbody = Instantiate(fuzzy, transform.position, transform.rotation);
-	return true;
+	var spawnspot = Random.insideUnitCircle * 2;
+	// while(not on the map) spawnspot = Random.insideUnitCircle;
+	var newFuzz : Rigidbody = Instantiate(fuzzy, this.transform.position + spawnspot, transform.rotation);
+	return false;
 }
