@@ -1,8 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FuzzyBehavior.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\hero.js">
     <Files>
-      <File FileName="Assets\Scripts\FuzzyBehavior.js" Line="13" Column="41" />
+      <File FileName="Assets\Scripts\hero.js" Line="30" Column="22" />
+      <File FileName="Assets\Scripts\SpawnerBehavior.js" Line="5" Column="23" />
+      <File FileName="Assets\Scripts\FuzzyBehavior.js" Line="23" Column="2" />
+      <File FileName="Assets\Scripts\BaseBehavior.js" Line="13" Column="2" />
+      <File FileName="Assets\HealthManager.js" Line="20" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
