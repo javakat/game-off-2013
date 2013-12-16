@@ -25,6 +25,8 @@ function Update () {
 function trySpawn() {
 	var spawnspot = Random.insideUnitCircle * 2;
 	// while(not on the map) spawnspot = Random.insideUnitCircle;
-	var newFuzz : Rigidbody = Instantiate(fuzzy, this.transform.position + spawnspot, transform.rotation);
+	
+	//commented out for now to save the server
+	//var newFuzz : Rigidbody = Instantiate(fuzzy, this.transform.position + spawnspot, transform.rotation);
 	return false;
 }

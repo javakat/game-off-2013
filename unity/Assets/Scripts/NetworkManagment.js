@@ -31,13 +31,20 @@ private var lastHeathManaDataSend: Date = new Date();
 //else it grabs that server info bra!
 function Awake() {
 		
+	Network.natFacilitatorPort = 25003;	
+	Network.natFacilitatorIP = "saintfactorstudios.com";
+	MasterServer.ipAddress = "saintfactorstudios.com";
+	MasterServer.port = 25004;
+		
+	Debug.Log(Network.player.ipAddress);
+		
 	//note, this ip is the server ip.  for testing purposes make it your local ip if you are the server.
-	if(Network.player.ipAddress == "192.168.1.41")
+	//note, this needs to be reworked somehow, it is dangerous
+	if(Network.player.ipAddress == "192.168.1.109")
 	{
 		// the first number in initialize server is max player count, the next is the port number, dont worry about the third
 		// Use NAT punchthrough if no public IP present
 		Network.InitializeServer(32, 25002, !Network.HavePublicAddress());
-		MasterServer.RegisterHost("NetworkTestGame", "Main Game Instance", "I luv this show");
 		
 		//GameObject.Find("Number").guiText.text = "Server Instance";
 	}
@@ -51,20 +58,6 @@ function Awake() {
 //if you aint the server and you floatin, it hooks you up
 //else special s*** for all them clients.
 function OnGUI() {
-
-	if(!connecting && !Network.isServer)
-	{	
-		//Generates the hostlist
-		var data : HostData[] = MasterServer.PollHostList();
-		    	  	    	
-		for (var element in data)
-		{	
-			//GameObject.Find("Number").guiText.text = "Client Instance";	
-			connecting = true;
-			Network.Connect(element);
-			break;
-		}
-	}
 
 	if (Network.isServer){
 		//Debug.Log("Running as a server");
@@ -149,7 +142,11 @@ function SelectNewHero (ipNum : String)
 //***************************************************************************************
 
 function OnServerInitialized() {
+	
+	MasterServer.RegisterHost("NetworkTestGame", "Main Game Instance");
+
     Debug.Log("Server initialized and ready");
+    SpawnPlayer();
     
     // you can make the server spawn a player if you uncomment the line below.  just a heads up.  
     // not that you would want that. unless you are testing.  like a dummy.  dummy.
@@ -177,6 +174,13 @@ function OnPlayerDisconnected(player: NetworkPlayer) {
     
     playerCount--;
 }
+function OnMasterServerEvent( message: MasterServerEvent )
+{	
+	if (message == MasterServerEvent.HostListReceived)
+	{
+		processHostList();
+	}	
+}
 
 
 //***************************************************************************************
@@ -190,13 +194,21 @@ function OnPlayerDisconnected(player: NetworkPlayer) {
 //if yes, that man becomin a watcha, know what im sayin
 function SpawnPlayer()
 {
+	//for testing only.  this is bad
+	var x = 0;
+	var y = 1;
+	var z = -0.55;
+	var posit = new Vector3(x,y,z);
+    Network.Instantiate(playerMan, posit, Quaternion.identity, 0);
+
 	if(playerCount == 0)
 	{
-		var x = 0;
-		var y = 1;
-		var z = -0.55;
-		var posit = new Vector3(x,y,z);
-	    Network.Instantiate(playerMan, posit, Quaternion.identity, 0);
+		//these lines should be uncommented in production
+		//var x = 0;
+		//var y = 1;
+		//var z = -0.55;
+		//var posit = new Vector3(x,y,z);
+	    //Network.Instantiate(playerMan, posit, Quaternion.identity, 0);
 	    
 		playerType = "Hero";
     }
@@ -218,6 +230,20 @@ function SpawnPlayerOverRide()
     Network.Instantiate(playerMan, posit, Quaternion.identity, 0);
     
 	playerType = "Hero";
+}
+
+//processes them hosts brah!
+function processHostList()
+{	
+	//Generates the hostlist
+	var data : HostData[] = MasterServer.PollHostList();
+	    	  	    	
+	for (var element in data)
+	{	
+		//GameObject.Find("Number").guiText.text = "Client Instance";
+		Network.Connect(element);
+		break;
+	}
 }
 
 
