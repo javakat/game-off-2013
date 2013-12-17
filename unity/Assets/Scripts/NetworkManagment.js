@@ -38,9 +38,22 @@ function Awake() {
 		
 	Debug.Log(Network.player.ipAddress);
 		
+	/************************************************
+				SUPER NOTE
+				
+		if you are building the server version
+		of the app, the condition should be 
+		TRUE, else it should be FALSE.
+		
+		This is so important I dropped all 
+		pretense of slang.  Please for the 
+		love of God remember this!!!!!!!!
+			
+	************************************************/
+		
 	//note, this ip is the server ip.  for testing purposes make it your local ip if you are the server.
 	//note, this needs to be reworked somehow, it is dangerous
-	if(Network.player.ipAddress == "192.168.1.109")
+	if(false)
 	{
 		// the first number in initialize server is max player count, the next is the port number, dont worry about the third
 		// Use NAT punchthrough if no public IP present
