@@ -31,10 +31,10 @@ private var lastHeathManaDataSend: Date = new Date();
 //else it grabs that server info bra!
 function Awake() {
 		
-	Network.natFacilitatorPort = 25003;	
-	Network.natFacilitatorIP = "saintfactorstudios.com";
-	MasterServer.ipAddress = "saintfactorstudios.com";
-	MasterServer.port = 25004;
+	//Network.natFacilitatorPort = 25003;	
+	//Network.natFacilitatorIP = "saintfactorstudios.com";
+	//MasterServer.ipAddress = "saintfactorstudios.com";
+	//MasterServer.port = 25004;
 		
 	Debug.Log(Network.player.ipAddress);
 		
@@ -51,8 +51,6 @@ function Awake() {
 			
 	************************************************/
 		
-	//note, this ip is the server ip.  for testing purposes make it your local ip if you are the server.
-	//note, this needs to be reworked somehow, it is dangerous
 	if(false)
 	{
 		// the first number in initialize server is max player count, the next is the port number, dont worry about the third
@@ -63,7 +61,8 @@ function Awake() {
 	}
 	else
 	{	
-		MasterServer.RequestHostList("NetworkTestGame");
+		Network.Connect("saintfactorstudios.com", 25002);
+		//MasterServer.RequestHostList("NetworkTestGame");
 	}
 	
 }
@@ -156,7 +155,7 @@ function SelectNewHero (ipNum : String)
 
 function OnServerInitialized() {
 	
-	MasterServer.RegisterHost("NetworkTestGame", "Main Game Instance");
+	//MasterServer.RegisterHost("NetworkTestGame", "Main Game Instance");
 
     Debug.Log("Server initialized and ready");
     SpawnPlayer();
@@ -187,6 +186,8 @@ function OnPlayerDisconnected(player: NetworkPlayer) {
     
     playerCount--;
 }
+
+/*
 function OnMasterServerEvent( message: MasterServerEvent )
 {	
 	if (message == MasterServerEvent.HostListReceived)
@@ -194,7 +195,7 @@ function OnMasterServerEvent( message: MasterServerEvent )
 		processHostList();
 	}	
 }
-
+*/
 
 //***************************************************************************************
 //
@@ -245,6 +246,7 @@ function SpawnPlayerOverRide()
 	playerType = "Hero";
 }
 
+/*
 //processes them hosts brah!
 function processHostList()
 {	
@@ -258,7 +260,7 @@ function processHostList()
 		break;
 	}
 }
-
+*/
 
 
 
