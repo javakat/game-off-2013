@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NetworkManagment.js">
     <Files>
-      <File FileName="Assets\Scripts\NetworkManagment.js" Line="43" Column="46" />
+      <File FileName="Assets\Scripts\NetworkManagment.js" Line="54" Column="10" />
+      <File FileName="Assets\Scripts\NetworkManagment.js" Line="268" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -158,7 +158,7 @@ function OnServerInitialized() {
 	//MasterServer.RegisterHost("NetworkTestGame", "Main Game Instance");
 
     Debug.Log("Server initialized and ready");
-    SpawnPlayer();
+    //SpawnPlayer();
     
     // you can make the server spawn a player if you uncomment the line below.  just a heads up.  
     // not that you would want that. unless you are testing.  like a dummy.  dummy.
